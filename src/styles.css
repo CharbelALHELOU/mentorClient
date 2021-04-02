@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  background-color: #f0f2f5;
+  color: #000223;
+  font-family: "Roboto";
+}
+
+.effect1 {
+  -webkit-box-shadow: 0 8px 9px -9px #777;
+  -moz-box-shadow: 0 8px 9px -9px #777;
+  box-shadow: 0 8px 9px -9px #777;
+}
