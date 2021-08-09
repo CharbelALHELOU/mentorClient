@@ -1,0 +1,47 @@
+<div class="full p-3">
+  <div class="row m-0 p-0 px-md-5 w-100">
+    <div class="col-md-6 col-12 logo ">
+      <img src="../../../assets/logo.png" alt="" *ngIf="!done && !loading" class="img-fluid">
+      <div class="lds-ring" *ngIf="loading"><div></div><div></div><div></div><div></div></div>
+      <i class="fa fa-check-circle" *ngIf="!loading && done && success"></i>
+      <i class="fa fa-times-circle" *ngIf="!loading && done && !success"></i>
+      <small class="w-100 text-center mt-2 ">{{message}}</small>
+    </div>
+    <div class="col-md-6 col-12 p-2" >
+      <div class="row m-0 p-0 py-3">
+        <h2 class="w-100 text-uppercase">Upload your resume</h2>
+        <p class="">We require your resume to learn more about you in order to identify the mentor that best matches
+          your profile and expectations.</p>
+      </div>
+      <div class="row m-0 p-0  px-md-5" *ngIf="!done">
+        <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+
+        <div class="file-upload w-100 row m-0 p-0 px-md-3">
+
+          <div class="col-7 text-center">
+            <small class="">{{fileName || "No file uploaded yet."}} </small>
+          </div>
+          <div class="col-5">
+            <button class="upload-btn btn effect2" (click)="fileUpload.click()">
+              <i class="fa fa-paperclip my-auto"></i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="row m-0 p-0 py-4 w-100 phone">
+        <div class="col-4 px-3 text-center">
+          <a class="w-100 text-center" routerLink="/about" routerLinkActive="active">About</a>
+        </div>
+        <div class="col-4 px-3 item-center text-center">
+          <a class="w-100 text-center" routerLink="/unavailable" routerLinkActive="active">Membership</a>
+        </div>
+        <div class="col-4 px-3 text-center">
+          <a class="w-100 text-center" routerLink="/unavailable" routerLinkActive="active">Impact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

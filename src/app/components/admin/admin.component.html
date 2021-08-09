@@ -1,0 +1,192 @@
+<div class="full w-100 p-3">
+
+  <div class="row m-0 py-2 pb-4 px-5">
+    <div class="btn font-weight-bold mx-3 ml-auto" (click)="user = true">Users</div>
+    <div class="btn font-weight-bold mx-3" (click)="user = false">Mentors</div>
+    <div class="btn  font-weight-bold" (click)="logout()">Logout</div>
+  </div>
+  <div class="row m-0 p-0 px-1">
+    <div class="col-3">
+      <div class="row m-0 py-2">
+        <div class="col-6 font-weight-bold">
+          Mentees
+        </div>
+        <div class="col-6 text-right">
+          {{users.length-1}}
+        </div>
+      </div>
+      <div class="row m-0 py-2">
+        <div class="col-6 font-weight-bold">
+          Mentors
+        </div>
+        <div class="col-6 text-right">
+          {{mentors.length}}
+        </div>
+      </div>
+      <div class="row m-0 py-2">
+        <div class="col-6 font-weight-bold">
+          New users
+        </div>
+        <div class="col-6 text-right">
+          {{NumOfNew}}
+        </div>
+      </div>
+      <div class="row m-0 py-2">
+        <div class="col-6 font-weight-bold">
+          No Resume
+        </div>
+        <div class="col-6 text-right">
+          {{NoResume}}
+        </div>
+      </div>
+      <div class="row m-0 py-2">
+        <div class="col-6 font-weight-bold">
+          Avg Age
+        </div>
+        <div class="col-6 text-right">
+          {{avgAge()}}
+        </div>
+      </div>
+      <div class="row m-0 py-2">
+        <div class="col-6 font-weight-bold">
+          Avg /mentor
+        </div>
+        <div class="col-6 text-right">
+          {{avgMentees()}}
+        </div>
+      </div>
+      <div class="row w-100 m-0 pt-4">
+        <div class="p-2 w-100 info">
+          <div class="row m-0 pb-2 font-weight-bold">
+            <small>{{currentUser.name}}</small>
+          </div>
+          <div class="content">
+            {{currentUser.university}}
+          </div>
+          <div class="content">
+            {{currentUser.major}}
+          </div>
+          <div class="content">
+            {{currentUser.age}}
+          </div>
+          <div class="content">
+            {{currentUser.email}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-9 platform p-3" *ngIf="user">
+      <div [ngClass]="{'row m-0 py-1 title': true}">
+        <div class="col-1">
+          <i class="fa fa-exchange-alt" (click)="newUsers = !newUsers"></i>
+        </div>
+        <div class="col-2">
+          Name
+        </div>
+        <div class="col-6 text-center font-weight-bold">
+          {{newUsers ? 'New Users' : 'Old Users'}}
+        </div>
+      </div>
+      <div class="scroll m-0 p-0" *ngIf="newUsers">
+        <div [ngClass]="{'row m-0 py-2 user': true, 'd-none' : user.mentors.length != 3 }"
+          *ngFor="let user of this.users; let i = index">
+          <div class="col-1">
+            <div
+              [ngClass]="{'circle mx-auto' : true, 'bg-danger' : user.resumeUrl == 'none', 'bg-warning' : user.resumeUrl != 'none' }"
+              (click)="detailsOf(i)">
+            </div>
+          </div>
+          <div class="col-2">
+            <small class="font-weight-bold"><a [href]="user.resumeUrl" target="blank">{{user.name}}</a></small>
+          </div>
+          <div class="col-2" *ngFor="let id of user.mentors;">
+            <small> {{getName(id)}} </small>
+          </div>
+          <div class="col-2 px-1">
+            <form id="form" #assignForm="ngForm" class="w-100 h-100 p-0 m-0">
+              <select list="names" type="name" class="w-100 h-100" name="name" placeholder="Mentor" ngModel
+                #name="ngModel" required>
+                <option *ngFor="let m of mentors;" value="{{m.id}}"> {{capitalize(m.name)}}
+                  ({{getMentees(m.id).length}})</option>
+                <option value="0" class="delete"> DELETE </option>
+              </select>
+            </form>
+          </div>
+          <div class="col-1">
+            <button class="btn btn-submit w-100 h-100" [disabled]="!assignForm.form.valid"
+              (click)="submit(assignForm, i)">
+              <i class="fa fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="scroll m-0 p-0" *ngIf="!newUsers">
+        <div [ngClass]="{'row m-0 py-2 user': true, 'd-none' : user.mentors.length == 3 || user.name == 'admin'}"
+          *ngFor="let user of users; let i = index">
+          <div class="col-1">
+            <div [ngClass]="{'circle mx-auto bg-success' : true }" (click)="detailsOf(i)">
+            </div>
+          </div>
+          <div class="col-2">
+            <small class="font-weight-bold"><a [href]="user.resumeUrl" target="blank">{{user.name}}</a></small>
+          </div>
+          <div class="col-2" *ngFor="let id of user.mentors;">
+            <small> {{getName(id)}} </small>
+          </div>
+          <div class="col-4">
+            <small>{{user.email}}</small>
+          </div>
+          <div class="col-2 px-1">
+            <form id="form" #assignForm="ngForm" class="w-100 h-100 p-0 m-0">
+              <select list="names" type="name" class="w-100 h-100" name="name" placeholder="Mentor" ngModel
+                #name="ngModel" required>
+                <option *ngFor="let m of mentors;" value="{{m.id}}"> {{capitalize(m.name)}}
+                  ({{getMentees(m.id).length}})</option>
+                <option value="0" class="delete"> DELETE </option>
+              </select>
+            </form>
+          </div>
+          <div class="col-1">
+            <button class="btn btn-submit" [disabled]="!assignForm.form.valid" (click)="submit(assignForm, i)">
+              <i class="fa fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-9 platform p-3" *ngIf="!user">
+      <div [ngClass]="{'row m-0 py-1 title': true}">
+        <div class="col-12 w-100 text-center text-white">
+          hello
+        </div>
+      </div>
+      <div class="scroll m-0 p-0">
+        <div [ngClass]="{'row m-0 py-2 user': true}">
+          <div class="col-3 p-2" *ngFor="let mentor of this.mentors; let j = index">
+            <div class="mentor p-2">
+              <div class="row m-0 p-0">
+                <div class="col-9">
+                  <div class="row m-0 p-0">
+                    <small class="font-weight-bold">{{capitalize(mentor.name)}} </small>
+                  </div>
+                  <div class="row m-0 p-0 mentees">
+                    {{getMentees(mentor.id).join(" - ")}}
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="btn" (click)="switch(j)">
+                    <small><i class="fa fa-toggle-on" *ngIf="mentor.show"></i></small>
+                    <small><i class="fa fa-toggle-off" *ngIf="!mentor.show"></i></small>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

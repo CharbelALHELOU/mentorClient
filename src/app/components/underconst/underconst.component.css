@@ -1,0 +1,15 @@
+.full{
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+}
+
+img{
+    opacity: 0.7;
+    height: 200px;
+    width: auto;
+}

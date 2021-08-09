@@ -1,0 +1,131 @@
+.user{
+    border-bottom: 0.25px solid white;
+}
+
+.circle{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.col-1{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.scroll{
+    height: 350px;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.platform{
+    background-color: white;
+    border-radius: 15px;
+    border: #0c2d48 2px solid;
+}
+
+.title{
+    font-weight: 500;
+    font-size: small;
+    border-bottom: 0.5px solid #0c2d48;
+}
+
+.full{
+    background-color: #f0f2f5;
+    position: absolute;
+    top : 0;
+    left :0;
+    z-index: 99;
+    height: 100vh;
+}
+
+
+
+
+select, option{
+    font-size: small;
+}
+
+a{
+    color: #0c2d48;
+}
+
+select{
+    background-color: #f0f2f5;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-submit{
+    font-size: xx-small;
+    background-color: #0c2d48;
+    color: #f0f2f5;     
+}
+
+.fa-exchange-alt{
+    font-size: small;
+    cursor: pointer;
+}
+
+.mentor{
+    background-color: #f0f2f5;
+}
+
+.mentees{
+    font-size: x-small;
+}
+
+
+/* width */
+*::-webkit-scrollbar {
+    width: 5px !important;
+    
+  }
+  
+  /* Track */
+  *::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  *::-webkit-scrollbar-thumb {
+    background: #0c2d48; 
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  *::-webkit-scrollbar-thumb:hover {
+    background: #0c2d48; 
+  }
+
+.delete{
+    color: red;
+    font-weight: 00;
+}
+
+h4{
+    color: white;
+}
+
+.stat{
+    color: #0c2d48;
+    font-weight: lighter;
+}
+
+
+  
+  /* Modal Content/Box */
+  .content {
+    font-size: x-small;
+  }
+
+  .info{
+      background-color: white;
+      color: #0c2d48;
+      height: 110px;
+  }

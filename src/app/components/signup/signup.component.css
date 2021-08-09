@@ -1,0 +1,254 @@
+.full{
+    padding-top: 10vh;
+    height: 100vh;
+  }
+
+.mentors .col-3{
+    cursor: pointer;
+}
+  
+  .circle{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 25px;
+    text-align: center;
+    font-weight: 720;
+    opacity: 0.25;
+  }
+  
+.done{
+    background: transparent;
+}
+
+.current{
+    background-color: #f0f2f5;
+    opacity: 1;
+}
+
+.col-2{
+    display: flex;
+    justify-content: center;
+}
+
+.card{
+    background-color: #f0f2f5;
+}
+
+
+@media (min-width : 769px) {
+    .card{
+        -webkit-box-shadow: 0 9px 10px -8px #777;
+    -moz-box-shadow: 0 9px 10px -8px #777;
+    box-shadow: 0 9px 10px -8px #777;  
+    width: 70%;
+    }
+    .step2{
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+    .step2::-webkit-scrollbar {
+        display: none;
+      }
+}
+  
+@media (max-width : 769px) {
+    .card{
+        background: transparent;
+        border: none;
+    }
+
+    input, select{
+        background-color: #f0f2f559;
+    }
+
+    .scroll{
+        display: none;
+    }
+}
+
+.forms{
+    display: flex;
+    justify-content: center;
+}
+
+.step3{
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.step3 .fa-check-circle{
+    color: #95d865;
+    font-size: 70px;
+}
+
+.step3 .fa-times-circle{
+    color: red;
+    font-size: 70px;
+}
+
+
+
+small{
+    font-size: small;
+}
+
+
+
+input, select{
+    width: 100%;
+    margin-top: 10px;
+    color: #0c2d48 ;
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+    background-color: #f0f2f5;
+}
+
+
+input::placeholder{
+    color: #0c2d4875;
+}
+
+select:invalid{
+    color: #0c2d4875;
+}
+option{
+    color: #0c2d48;
+}
+
+
+img{
+    border-radius: 50%;
+    height: 50px;
+    width: auto;
+    border: none;
+}
+
+.mentors{
+    background-color: #f0f2f5;
+    border-radius: 5px;
+    border: 2px solid #f0f2f5;
+}
+
+.mentors .col-3{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.mentors a{
+    text-transform: capitalize;
+    z-index: 99;
+    color: #0c2d48;
+    font-weight: 600;   
+}
+
+.selected{
+    border: 2px solid #0c2d48;
+}
+
+.disabled{
+    transition: opacity 0.2s ease-in;
+    opacity: 0.5;
+}
+
+.selection {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.selection img{
+    height: 50px;
+    width: auto;
+}
+
+.bg-warning{
+    background-color: #0c2d48 !important;
+    color: white;
+    text-transform: capitalize;
+}
+
+.bg-warning:hover{
+    transform: scale(1.05); 
+    background-color: #0c2d48 !important;
+    cursor: pointer;
+}
+
+.bg-danger{
+    background-color: #0c2d48 !important;
+    color: white;
+    text-transform: capitalize;
+}
+
+.bg-danger:hover{
+    transform: scale(1.05); 
+    background-color: #0c2d48 !important;
+    cursor: pointer;
+}
+
+.bg-success{
+    background-color: #a0d47a!important;
+    color: white;
+    text-transform: capitalize;
+}
+
+.bg-success:hover{
+    transform: scale(1.05); 
+    background-color: #a0d47a !important;
+    cursor: pointer;
+}
+
+.bg-grey{
+    background-color: #f0f2f5;
+    border-radius: 5px;
+}
+
+.font-weight-bold{
+    font-weight: 600;
+}
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #0c2d48;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #0c2d48 transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

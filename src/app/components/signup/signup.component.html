@@ -1,0 +1,137 @@
+<div class="full">
+  <div class="row m-0 w-100 p-3 px-3 px-md-5">
+    <div class="col-2 p-1">
+      <div [ngClass]="{'circle': true, 'done' : step > 1, 'current' :step == 1}">1</div>
+    </div>
+    <div class="col-3">
+      <hr>
+    </div>
+    <div class="col-2 p-1">
+      <div [ngClass]="{'circle': true, 'done' : step > 2, 'current' :step == 2}">2</div>
+    </div>
+    <div class="col-3 hr">
+      <hr>
+    </div>
+    <div class="col-2 p-1">
+      <div [ngClass]="{'circle': true, 'current' :step == 3}">3</div>
+    </div>
+  </div>
+  <div class="row m-0 w-100 px-4 pt-2 pb-3">
+    <h4 class="w-100 text-center"> {{title[this.step-1]}} </h4>
+    <small class="w-100 text-center" *ngIf="step==2">Tap on their photos to select a mentor</small>
+    <small class="w-100 text-center" *ngIf="step==2">Tap on their name to access their Linkedin profile</small>
+  </div>
+  <div class="row m-0 w-100 px-3 px-md-5 py-1 forms">
+
+    <!-- Personal Information-->
+
+    <form id="form" #registerForm="ngForm" (ngSubmit)="setData(registerForm.value)" class="w-100 p-1 px-md-5"
+      *ngIf="step == 1">
+      <div class="row m-0 p-0 py-2 pb-3">
+        <div class="col-md-6 col-12">
+          <input type="name" id="name" name="name" class="p-2 px-3" ngModel #name="ngModel"
+            placeholder={{placeholders.name}} required minlength="4" />
+        </div>
+        <div class="col-md-6 col-12">
+          <select list="age" id="age" type="age" class="age p-2 px-3" name="age" ngModel #age="ngModel" required>
+            <option value="" class="placeholder" disabled selected hidden>{{placeholders.age}}</option>
+            <option *ngFor="let a of ages;" value="{{a}}"> {{a}}</option>
+          </select>
+        </div>
+        <div class="col-md-6 col-12">
+          <input type="major" id="major" name="major" class="p-2 px-3" ngModel #major="ngModel"
+            placeholder={{placeholders.major}} required />
+        </div>
+        <div class="col-md-6 col-12">
+          <input type="university" id="university" name="university" class="p-2 px-3" ngModel #university="ngModel"
+            placeholder={{placeholders.university}} required />
+        </div>
+        <div class="col-12">
+          <input type="email" id="email" name="email" class="p-2 px-3" ngModel #email="ngModel"
+            placeholder={{placeholders.email}}
+            pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+            required />
+        </div>
+      </div>
+      <div class="row px-3 py-3">
+        <div class="col-12">
+          <button class=" btn px-2 py-1 bg-warning w-100" id="sign" type="submit"
+          [disabled]="!registerForm.form.valid && firstTime">Next</button>
+        </div>
+        
+        <!---->
+      </div>
+
+    </form>
+
+
+    <!-- SELECTION-->
+    <div class="row m-0 p-0 step2" *ngIf="step==2">
+      <div class="col-md-4 col-12 p-2" *ngFor="let mentor of mentors; let i = index">
+        <div [ngClass]="{'row mentors m-0 h-100 p-2': true,'selected': here(i), 'disabled' : !here(i)&&full(), 'd-none' : !mentor.show}">
+          <div class="col-3" (click)="select(i)">
+            <img [src]="mentor.imageUrl" [alt]="mentor.name" class="" />
+          </div>
+          <div class="col-9">
+            <div class="">
+              <a [href]="mentor.linkedinUrl" target="blank" class="mt-auto w-50">
+                {{mentor.name}}
+              </a> - <small>{{mentor.university.split('-')[1]}}</small><br>
+              <small class="mb-auto">{{mentor.position}}</small><br>
+                <small>{{mentor.university.split('-')[0]}}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row m-0 px-5 w-100 py-3" *ngIf="step==2">
+      <div class="col-6">
+        <button class="mr-auto btn px-2 py-1 bg-danger w-100" id="sign" (click)="back()">Back</button>
+      </div>
+      <div class="col-6">
+        <button class="ml-auto btn px-2 py-1 bg-danger w-100" id="sign" (click)="submit()"
+        [disabled]="this.selected.length < 3">Submit</button>
+      </div>
+      
+      
+     
+    </div>
+
+    <!-- SELECTION-->
+    <div class="row m-0 p-md-2 px-2 step3" *ngIf="step==3">
+      <div class="">
+        <div class="lds-ring" *ngIf="loading"><div></div><div></div><div></div><div></div></div>
+        <i class="fa fa-check-circle" *ngIf="!loading && success"></i>
+        <i class="fa fa-times-circle" *ngIf="!loading && !success"></i>
+      </div>
+    </div>
+    <div class="row m-0 py-3 px-2 step3" *ngIf="step==3">
+      <div class="">
+        <h6 *ngIf="!loading && success">
+          Registration success !
+        </h6>
+        <p *ngIf="!loading && success">
+          You will shortly recieve an email to confirm you registration and to provide a link to safely submit you resume. Please note that this step is mandatory to help us find the best match for you !
+        </p>
+        <p *ngIf="!loading && !success">
+          {{error}}</p>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="col-12 col-md-6">
+    <div class="row m-0 p-0 py-4 w-100 phone">
+      <div class="col-4 px-3 text-center">
+        <a class="w-100 text-center" routerLink="/about" routerLinkActive="active">About</a>
+      </div>
+      <div class="col-4 px-3 item-center text-center">
+        <a class="w-100 text-center" routerLink="/unavailable" routerLinkActive="active">Membership</a>
+      </div>
+      <div class="col-4 px-3 text-center">
+        <a class="w-100 text-center" routerLink="/unavailable" routerLinkActive="active">Impact</a>
+      </div>
+    </div>
+  </div>
+
+</div>

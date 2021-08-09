@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "@ng-toolkit/universal": "^8.1.0",
     "angular-font-awesome": "^3.1.2",
     "bootstrap": "^4.2.1",
     "core-js": "^2.5.4",

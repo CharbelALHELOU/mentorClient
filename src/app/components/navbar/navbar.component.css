@@ -1,8 +1,51 @@
 img{
-    height: 2em;
+    height: 1.8em;
     width: auto;
 }
+/*
+@media (min-width : 769px) {
+    .fixed-top{
+        position: initial;
+    }
+}*/
+
+
+#mobile-nav{
+    opacity: 1;
+}
+
+.fa-bars{
+    color: white;
+}
+
+nav{
+    z-index: 9;
+}
+
+.signup {
+    color: white;
+  }
 
 nav a{
-    color: #000223;
+    color: white;
+}
+
+.btn {
+    background-color: #0c2d48;
+    border: none;
+    color: #F0F2F5 !important;
+}
+
+.nav-item:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+.navbar-collapse{
+    z-index: 10;
+}
+
+
+.bg-white{
+    background-color: #0c2d48 !important;
 }

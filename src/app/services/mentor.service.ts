@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient} from "@angular/common/http";
 import { Router } from "@angular/router";
 import { BehaviorSubject } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class MentorService {
-  private url = "https://mentor-test-api.herokuapp.com/shop";
+  private url = "https://thawing-journey-90753.herokuapp.com/shop";
 
   private mentors = new BehaviorSubject(null);
   currentMentors = this.mentors.asObservable();
@@ -50,12 +50,16 @@ export class MentorService {
     return this.http.get<any>(this.url + "/search/" + mentorName);
   }
 
+  getMentorById(id){
+    return this.http.get<any>(this.url + "/mentors/" + id )
+  }
+
   createMentor(newMentor) {
     return this.http.post<any>(this.url, newMentor);
   }
 
-  editMentor(mentorId, updatedMentor) {
-    return this.http.put<any>(this.url + "/" + mentorId, updatedMentor);
+  show(mentorId, show) {
+    return this.http.put<any>(this.url + "/show/" + mentorId, {show : show});
   }
 
   deleteMentor(mentorId) {

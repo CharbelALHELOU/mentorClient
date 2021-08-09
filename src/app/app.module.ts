@@ -16,8 +16,13 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
 import { FilterPipe } from "./pipes/filter.pipe";
 import { HighlightPipe } from "./pipes/highlight.pipe";
 import { ShortenPipe } from "./pipes/shorten.pipe";
-import { MentorsComponent } from "./components/dashboard/mentors/mentors.component";
-import { SidebarComponent } from './components/dashboard/sidebar/sidebar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AboutComponent } from './components/about/about.component';
+import { LandingComponent } from './components/landing/landing.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { UnderconstComponent } from './components/underconst/underconst.component';
+import { UploadComponent } from './components/upload/upload.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +32,13 @@ import { SidebarComponent } from './components/dashboard/sidebar/sidebar.compone
     FilterPipe,
     HighlightPipe,
     ShortenPipe,
-    MentorsComponent,
-    SidebarComponent
+    FooterComponent,
+    AboutComponent,
+    LandingComponent,
+    SignupComponent,
+    UnderconstComponent,
+    UploadComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

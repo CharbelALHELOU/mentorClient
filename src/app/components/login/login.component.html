@@ -1,0 +1,98 @@
+<!--<div class="full">
+  <div class="registration-form">
+    <header>
+      <div class="row">
+        <div class="col-10">
+          <h1>JOIN US!</h1>
+          <p class="w-100">Fill in your informations</p>
+        </div>
+        <div class="col-2">
+          <div *ngIf="isLoading" class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <form
+      #loginForm="ngForm"
+      *ngIf="!isLoading"
+      novalidate
+    >
+      <div class="input-section">
+        <input
+          type="email"
+          name="email"
+          [ngClass]="{ 'is-invalid': emailInput.errors && emailInput.touched }"
+          class="email"
+          placeholder="E-Mail"
+          ngModel
+          #emailInput="ngModel"
+          required
+          pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+        />
+
+        <input
+          type="password"
+          name="password"
+          [ngClass]="{
+            'is-invalid': passwordInput.errors && passwordInput.touched
+          }"
+          placeholder="Password"
+          ngModel
+          #passwordInput="ngModel"
+          required
+          minlength="4"
+        />
+        <div class="animated-button w-100" (click)="onLoginUser(loginForm)">
+          <span class="icon-paper-plane" id="email-a"
+            ><i class="fa fa-arrow-up"></i
+          ></span>
+            </div>
+      </div>
+
+      <div class="success" id="success">
+        <p>ACCOUNT CREATED</p>
+      </div>
+
+      <div class="unsuccess" id="unsuccess">
+        <p>ERROR CREATING YOUR ACCOUNT</p>
+      </div>
+    </form>
+  </div>
+</div>
+-->
+
+
+
+<div class="back"></div>
+<div class="full p-3">
+  <div class="card effect1 mx-auto p-4">
+    <form id="form" #loginForm="ngForm" class="">
+      <div class="col-12 m-0 p-0 pb-4 w-100">
+        <img src="../../../../../assets/logo.png" alt="">
+        <!--<div class="boxContainer mt-2" *ngIf="isLoading">
+          <div class="box box1"></div>
+          <div class="box box2"></div>
+          <div class="box box3"></div>
+          <div class="box box4"></div>
+          <div class="box box5"></div>
+        </div>-->
+        <p class="w-100 text-center bg-danger" *ngIf="isError">{{warning}}</p>
+      </div>
+      <div class="col-12 m-0 p-0 w-100">
+        <input type="email" id="email" name="email" class="p-2 email" ngModel #email="ngModel" placeholder="Email"
+          autocomplete="off"
+          pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+          required />
+        <input minlength="4" id="password" type="password" class="p-2 password" name="password"
+          placeholder="Password" ngModel #password="ngModel" required />
+      </div>
+      <div class="col-12 m-0 p-0 pt-2 pb-2 w-100">
+        <button class="mx-auto btn p-2" id="sign" [disabled]="!loginForm.form.valid"
+        (click)="onLoginUser(loginForm)" >LOG IN</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+

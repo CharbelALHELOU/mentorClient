@@ -1,14 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Georama:wght@200&display=swap');
+
 
 html,
 body {
-  background-color: #f0f2f5;
-  color: #000223;
-  font-family: "Roboto";
+  font-family: 'Georama', sans-serif;
 }
 
 .effect1 {
-  -webkit-box-shadow: 0 8px 9px -9px #777;
-  -moz-box-shadow: 0 8px 9px -9px #777;
-  box-shadow: 0 8px 9px -9px #777;
+  -webkit-box-shadow: 0 2px 6px -2px #777;
+  -moz-box-shadow: 0 2px 6px -2px #777;
+  box-shadow: 0 2px 6px -2px #777;
+}
+
+.effect2 {
+  -webkit-box-shadow: 0 9px 10px -8px #777;
+  -moz-box-shadow: 0 9px 10px -8px #777;
+  box-shadow: 0 9px 10px -8px #777;
+}
+
+@media (min-width : 768px) {
+  .phone{
+      display: none !important;
+  }
+}
+
+@media (max-width : 768px) {
+  .notphone{
+      display: none !important;
+  }
+}
+
+/* width */
+*::-webkit-scrollbar {
+  width: 0px;
+  
+}
+
+/* Track */
+*::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+*::-webkit-scrollbar-thumb {
+  background: #0c2d48; 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+*::-webkit-scrollbar-thumb:hover {
+  background: #0c2d48; 
 }
