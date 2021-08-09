@@ -13,9 +13,6 @@ import { AuthGuard } from "./guards/auth.guard";
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 // Pipes
-import { FilterPipe } from "./pipes/filter.pipe";
-import { HighlightPipe } from "./pipes/highlight.pipe";
-import { ShortenPipe } from "./pipes/shorten.pipe";
 import { FooterComponent } from './components/footer/footer.component';
 import { AboutComponent } from './components/about/about.component';
 import { LandingComponent } from './components/landing/landing.component';
@@ -29,9 +26,6 @@ import { AdminComponent } from './components/admin/admin.component';
     AppComponent,
     NavbarComponent,
     routingComponents,
-    FilterPipe,
-    HighlightPipe,
-    ShortenPipe,
     FooterComponent,
     AboutComponent,
     LandingComponent,
